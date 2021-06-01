@@ -1,0 +1,1343 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "2.0.0",
+        "title": "Totalcabsmobility",
+        "description": "Totalcabsmobility",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "ss.stagingsdei.com:3531",
+    "basePath": "/api",
+    "tags": [
+        {
+            "name": "Users",
+            "description": "API for users in the system"
+        }
+    ],
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/driverLogin": {
+            "post": {
+                "tags": [
+                    "drivers"
+                ],
+                "parameters": [{
+                    "name": "driver",
+                    "description": "Driver prams to login",
+                    "in": "body",
+                    "required": "true",
+                    "schema": {
+                      "$ref": "#definitions/Driver"
+                    }
+                  }],
+            
+                "summary": "Driver login",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Driverres"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/customerLogin":{
+            "post": {
+                "tags": [
+                    "drivers"
+                ],
+                "parameters": [{
+                    "name": "driver",
+                    "description": "Customer prams to login",
+                    "in": "body",
+                    "required": "true",
+                    "schema": {
+                      "$ref": "#definitions/Customer"
+                    }
+                  }],
+            
+                "summary": "Customer login",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Driverres"
+                        }
+                    }
+                }
+            }
+        },
+        "/getJobsHistory": {
+            "post": {
+                "tags": [
+                    "drivers"
+                ],
+                "parameters": [{
+                    "name": "driver",
+                    "description": "Driver prams to get jobs history",
+                    "in": "body",
+                    "required": "true",
+                    "schema": {
+                      "$ref": "#definitions/Driverjobs"
+                    }
+                  },
+                  {
+                    "name": "authorization",
+                    "description": "Access token to authorization of driver",
+                    "in": "header",
+                    "type": "string",
+                    "required": "true"
+                  }],
+            
+                "summary": "Driver Jobs History",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Driverres"
+                        }
+                    }
+                }
+            }
+        },
+        "/customerSignup": {
+            "post": {
+                "tags": [
+                    "customers"
+                ],
+                "parameters": [{
+                    "name": "customer",
+                    "description": "Customer prams",
+                    "in": "body",
+                    "required": "true",
+                    "schema": {
+                      "$ref": "#definitions/CustomerSignup"
+                    }
+                  }
+                 ],
+            
+                "summary": "Driver Jobs History",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Driverres"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/forgotPassword":
+        {
+        "post": {
+            "tags": [
+                "customers"
+            ],
+            "parameters": [{
+                "name": "customer",
+                "description": "Customer prams",
+                "in": "body",
+                "required": "true",
+                "schema": {
+                  "$ref": "#definitions/forgotPassword"
+                }
+              }
+             ],
+        
+            "summary": "Customer forgotPassword",
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                        "$ref": "#/definitions/Driverres"
+                    }
+                }
+            }
+        }
+    },
+    "/resetPassword":
+    {
+    "post": {
+        "tags": [
+            "customers"
+        ],
+        "parameters": [{
+            "name": "customer",
+            "description": "Customer prams",
+            "in": "body",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/resetPassword"
+            }
+          }
+         ],
+    
+        "summary": "Customer resetPassword",
+        "responses": {
+            "200": {
+                "description": "OK",
+                "schema": {
+                    "$ref": "#/definitions/Driverres"
+                }
+            }
+        }
+    }
+},
+
+"/verifyAccount":{
+    "post": {
+        "tags": [
+            "customers"
+        ],
+        "parameters": [{
+            "name": "customer",
+            "description": "Customer prams",
+            "in": "body",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/verifyLink"
+            }
+          }
+         ],
+    
+        "summary": "Customer verifyLink",
+        "responses": {
+            "200": {
+                "description": "OK",
+                "schema": {
+                    "$ref": "#/definitions/Driverres"
+                }
+            }
+        }
+    }
+},
+"/driverstatus":{
+    "post": {
+        "tags": [
+            "driver"
+        ],
+        "parameters": [{
+            "name": "driver",
+            "description": "Drivers prams",
+            "in": "body",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/driverstatus"
+            }
+          },
+          {
+            "name": "authorization",
+            "description": "Access token to authorization of driver",
+            "in": "header",
+            "type": "string",
+            "required": "true"
+          }
+         ],
+    
+        "summary": "Driver status update",
+        "responses": {
+            "200": {
+                "description": "OK",
+                "schema": {
+                    "$ref": "#/definitions/Driverres"
+                }
+            }
+        }
+    }
+},
+
+"/changedriversatus":{
+    "post": {
+        "tags": [
+            "driver"
+        ],
+        "parameters": [{
+            "name": "driver",
+            "description": "Drivers prams",
+            "in": "body",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/driveronlinestatus"
+            }
+          },
+          {
+            "name": "authorization",
+            "description": "Access token to authorization of driver",
+            "in": "header",
+            "type": "string",
+            "required": "true"
+          }
+        
+         ],
+    
+        "summary": "Driver status update",
+        "responses": {
+            "200": {
+                "description": "OK",
+                "schema": {
+                    "$ref": "#/definitions/Driverres"
+                }
+            }
+        }
+    }
+},
+"/riderdetails":{
+    "post": {
+        "tags": [
+            "driver"
+        ],
+        "parameters": [{
+            "name": "driver",
+            "description": "driver prams",
+            "in": "body",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/customerdetails"
+            }
+          },
+          {
+            "name": "authorization",
+            "description": "Access token to authorization of driver",
+            "in": "header",
+            "type": "string",
+            "required": "true"
+          }
+         ],
+    
+        "summary": "Driver status update",
+        "responses": {
+            "200": {
+                "description": "OK",
+                "schema": {
+                    "$ref": "#/definitions/Driverres"
+                }
+            }
+        }
+    }
+},
+
+"/makepayment":{
+    "post": {
+        "tags": [
+            "transaction"
+        ],
+        "parameters": [{
+            "name": "trip",
+            "description": "trip prams",
+            "in": "body",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/tripdetails"
+            }
+          }
+         
+         ],
+    
+        "summary": "Driver status update",
+        "responses": {
+            "200": {
+                "description": "OK",
+                "schema": {
+                    "$ref": "#/definitions/Driverres"
+                }
+            }
+        }
+    }
+},
+"/messageHistory":{
+    "post": {
+        "tags": [
+            "messageHistory"
+        ],
+        "parameters": [{
+            "name": "Message",
+            "description": "Message prams",
+            "in": "body",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/messagedetails"
+            }
+          }
+          
+         ],
+    
+        "summary": "Get Message History",
+        "responses": {
+            "200": {
+                "description": "OK",
+                "schema": {
+                    "$ref": "#/definitions/Driverres"
+                }
+            }
+        }
+    }
+},
+
+    "/messageList":{
+    "post": {
+        "tags": [
+            "messageHistory"
+        ],
+        "parameters": [{
+            "name": "Message",
+            "description": "Message prams",
+            "in": "body",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/messageList"
+            }
+          }
+          
+         ],
+    
+        "summary": "Get User Listing",
+        "responses": {
+            "200": {
+                "description": "OK",
+                "schema": {
+                    "$ref": "#/definitions/Driverres"
+                }
+            }
+        }
+    }
+},
+"/tripfare":{
+    "post": {
+        "tags": [
+            "transaction"
+        ],
+        "parameters": [{
+            "name": "Message",
+            "description": "Message prams",
+            "in": "body",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/transactionamount"
+            }
+          }
+          
+         ],
+    
+        "summary": "Get Estimated fare",
+        "responses": {
+            "200": {
+                "description": "OK",
+                "schema": {
+                    "$ref": "#/definitions/Driverres"
+                }
+            }
+        }
+}
+},
+
+"/riderequest":{
+    "post": {
+        "tags": [
+            "Rides"
+        ],
+        "parameters": [{
+            "name": "Rides",
+            "description": "Rides prams",
+          
+            "in": "body",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/riderequest"
+            }
+          }
+          
+         ],
+    
+        "summary": "Ride qequest",
+        "responses": {
+            "200": {
+                "description": "OK",
+                "schema": {
+                    "$ref": "#/definitions/Driverres"
+                }
+            }
+        }
+
+
+}  
+    },
+
+
+    "/reviewandrating":{
+        "post": {
+            "tags": [
+                "Ride rating"
+            ],
+            "parameters": [{
+                "name": "Rides",
+                "description": "Rides prams",
+              
+                "in": "body",
+                "required": "true",
+                "schema": {
+                  "$ref": "#definitions/rating"
+                }
+              }
+              
+             ],
+        
+            "summary": "Rating and Review",
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                        "$ref": "#/definitions/Driverres"
+                    }
+                }
+            }
+
+    }
+
+
+
+
+
+
+},
+
+"/driverDistance":{
+    "post": {
+        "tags": [
+            "driver distance"
+        ],
+        "parameters": [{
+            "name": "Driver",
+            "description": "Driver prams",
+          
+            "in": "body",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/driverdistance"
+            }
+          }
+          
+         ],
+    
+        "summary": "driverdistance",
+        "responses": {
+            "200": {
+                "description": "OK",
+                "schema": {
+                    "$ref": "#/definitions/Driverres"
+                }
+            }
+        }
+}
+
+},
+
+"/viewdocuments":{
+    "post": {
+        "tags": [
+            "view documents"
+        ],
+        "parameters": [{
+            "name": "Driver",
+            "description": "Driver prams",
+          
+            "in": "body",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/documents"
+            }
+          },
+          {
+            "name": "authorization",
+            "description": "Access token to authorization of driver",
+            "in": "header",
+            "type": "string",
+            "required": "true"
+          }
+          
+         ],
+    
+        "summary": "viewdocuments",
+        "responses": {
+            "200": {
+                "description": "OK",
+                "schema": {
+                    "$ref": "#/definitions/Driverres"
+                }
+            }
+        }
+}
+},
+"/logout":{
+    "post": {
+        "tags": [
+            "logout"
+        ],
+        "parameters": [{
+            "name": "Driver",
+            "description": "Driver prams",
+          
+            "in": "body",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/logout"
+            }
+          },
+          {
+            "name": "authorization",
+            "description": "Access token to authorization of driver",
+            "in": "header",
+            "type": "string",
+            "required": "true"
+          }
+          
+         ],
+    
+        "summary": "viewdocuments",
+        "responses": {
+            "200": {
+                "description": "OK",
+                "schema": {
+                    "$ref": "#/definitions/Driverres"
+                }
+            }
+        }
+}
+},
+"/upcomingandcompleteride":{
+    "post": {
+        "tags": [
+            "upcomingandcompleteride"
+        ],
+        "parameters": [{
+            "name": "Driver",
+            "description": "Driver prams",
+          
+            "in": "body",
+            "required": "true",
+            "schema": {
+              "$ref": "#definitions/upcomingandcompleteride"
+            }
+          },
+          {
+            "name": "authorization",
+            "description": "Access token to authorization of driver",
+            "in": "header",
+            "type": "string",
+            "required": "true"
+          }
+          
+         ],
+    
+        "summary": "viewdocuments",
+        "responses": {
+            "200": {
+                "description": "OK",
+                "schema": {
+                    "$ref": "#/definitions/Driverres"
+                }
+            }
+        }
+}
+
+}
+    },
+    "definitions": {
+        "Driver": {
+            "required": [
+                "licencenumber",
+                "deviceType",
+                "dob"
+            ],
+            "properties": {
+                
+                "licencenumber": {
+                    "type": "string"
+                },
+                "dob":{
+                    "type":"string"
+                },
+                "deviceType":{
+                    "type":"string"
+                },
+               
+                    "deviceToken":{
+                        "type":"string"
+                    }
+                }
+                
+            },
+            "Customer":{
+                "required": [
+                    "email",
+                    "password"
+                   
+                ],
+                "properties": {
+                    
+                    "email": {
+                        "type": "string"
+                    },
+                    "password":{
+                        "type":"string"
+                    }
+                    }
+                },
+            "customerdetails":{
+                "required": [
+                   
+                    "jobid"
+                    
+                ],
+                "properties": {
+                    
+                  
+                    "jobid":{
+                            "type":"string"
+                        }
+
+                    
+                    }
+            },
+            "driverstatus":{
+                "required": [
+                    "latitude",
+                    "longitude",
+                    "time",
+                    "jobid",
+                    "status"
+                ],
+                "properties": {
+                    
+                    "latitude": {
+                        "type": "string"
+                    },
+                    "longitude":{
+                        "type":"string"
+                    },
+                    "triptime":{
+                        "type":"string"
+                    },
+                    "jobid":{
+                            "type":"string"
+                        },
+
+                    "status":{
+                            "type":"string"
+                        }
+                    }
+            },
+            "CustomerSignup":{
+                "required": [
+                    "email",
+                    
+                    "confirmpassword"
+                ],
+                "properties": {
+                    
+                    "email": {
+                        "type": "string"
+                    },
+                    "confirmpassword":{
+                        "type":"string"
+                    }
+                    
+                    }
+            },
+        
+        "Driverjobs": {
+            "required": [
+                "driverid",
+                
+                "dateOfJourney"
+            ],
+            "properties": {
+                
+                "driverid": {
+                    "type": "string"
+                },
+                "dateOfJourney":{
+                    "type":"string"
+                }
+                
+                
+            }
+        },
+        "otpverification": {
+            "required": [
+                "password"
+                ],
+            "properties": {
+                
+                "password": {
+                    "type": "string"
+                }
+           }
+        },
+        "customerLoginPhone": {
+            "required": [
+                "phonenumber"
+                ],
+            "properties": {
+                
+                "phonenumber": {
+                    "type": "string"
+                }
+           }
+        },
+       
+        "signupcompany": {
+            "required": [
+                "email",
+                "name",
+                "lastnane",
+                "companyname",
+                "password",
+                "ConfirmPassword"
+
+                ],
+            "properties": {
+                
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "companyname": {
+                    "type": "string"
+                },
+                "lastnane": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "confirmpassword": {
+                    "type": "string"
+                }
+                }
+        },
+          
+        "customersignup": {
+            "required": [
+                "email",
+                "name",
+                "password",
+                "ConfirmPassword"
+
+                ],
+            "properties": {
+                
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "confirmpassword": {
+                    "type": "string"
+                }
+                }
+        },
+
+        "forgotPassword":{
+            "required": [
+                "email"
+                                
+            ],
+            "properties": {
+                
+                "email": {
+                    "type": "string"
+                }
+               
+                
+            }
+
+        },
+        "getAllDriverdata":{
+            "required":[
+                "_id"
+            ],
+            "properties":{
+                "_id":{
+                   "type":"string" 
+                }
+            }
+        },
+
+        "resetPassword":{
+            "required": [
+                "token",
+                "ConfirmPassword"
+
+                                
+            ],
+            "properties": {
+                
+                "token": {
+                    "type": "string"
+                },
+
+                "ConfirmPassword":{
+                    "type":"string"
+                }
+               
+                
+            }
+        },
+        "driveronlinestatus":{
+            "required": [
+              "driverid",
+              "status",
+              "latitude",
+              "longitude",
+              "address"           
+            ],
+            "properties": {
+                
+                "driverid": {
+                    "type": "string"
+                },
+
+                "status":{
+                    "type":"string"
+                },
+                "latitude":{
+                    "type":"string"
+                },
+                "longitude":{
+                    "type":"string"
+                },
+                "address":{
+                    "type":"string"
+                }
+               
+                
+            }
+        },
+        "verifyLink":{
+            "required": [
+                "token"
+                       
+            ],
+            "properties": {
+                
+                "token": {
+                    "type": "string"
+                }
+                
+            }
+        },
+
+
+        "tripdetails":{
+            "required": [
+             "jobid",
+             "amount",
+             "type" 
+             
+            ],
+            "properties": {
+                
+                "jobid": {
+                    "type": "string"
+                },
+                "amount":{
+                    "type":"string"
+                },
+                "type":{
+                    "type":"string"
+                },
+                "cardamount":{
+                    "type":"string"
+                },
+                "cashamount":{
+                    "type":"string"
+                },
+                "pin":{
+                    "type":"string"
+                }
+                
+            }
+        },
+        "messagedetails":{
+            "required": [
+                "sender",
+                "receiver",
+                "page",
+                "limit"
+               ],
+               "properties": {
+                   
+                   "sender": {
+                       "type": "string"
+                   },
+                   "receiver": {
+                    "type": "string"
+                },
+                "page": {
+                    "type": "string"
+                },
+                "limit": {
+                    "type": "string"
+                }
+                   
+               }
+        },
+
+        "messageList":{
+            "required": [
+                "userid",
+                "page",
+                "limit"
+               ],
+               "properties": {
+                   
+                "userid": {
+                       "type": "string"
+                   },
+                "page": {
+                    "type": "string"
+                },
+                "limit": {
+                    "type": "string"
+                }
+                   
+               }
+        },
+
+
+        "transactionamount":{
+            "required": [
+                "Distance"
+               ],
+               "properties": {
+                   
+                "Distance": {
+                       "type": "string"
+             
+               }
+        }
+    },
+
+        "riderequest":{
+            "required": [
+                "pickuplocation"
+               ],
+               "properties": {
+                   
+                "pickuplocation": {
+                    "type":"string",
+                    "latitude":{
+                       "type": "string"
+                    },
+                    "longitude":{
+                        "type":"string"
+                    }
+        },
+        "droplocation": {
+            "type":"string",
+            "latitude":{
+               "type": "string"
+            },
+            "longitude":{
+                "type":"string"
+            }
+},
+"riderid":{
+    "type":"string"
+}
+    }
+    
+
+},
+"addBooking":{
+    "required": [
+      "distance",
+        "duration",
+        "fare",
+        "tax",
+        "totalFare",
+        "taxiType",
+        "pickUpLocation",
+        "dropLocation"
+       ],
+       "properties": {
+        "distance":{
+            "type":"string"
+            },
+            "duration":{
+                "type":"string"
+                },
+                "fare":{
+                    "type":"Number"
+                    },
+                    "tax":{
+                        "type":"Number"
+                        },
+                        "totalFare":{
+                            "type":"Number"
+                            },
+                            "taxiType":{
+                                "type":"string"
+                                },
+          "pickuplocation": {
+            "type":"string",
+            "latitude":{
+               "type": "string"
+            },
+            "longitude":{
+                "type":"string"
+            }
+},
+"droplocation": {
+    "type":"string",
+    "latitude":{
+       "type": "string"
+    },
+    "longitude":{
+        "type":"string"
+    }
+}
+
+}
+
+
+},
+"getDriver":{
+    "required": [
+        "pickuplocation"
+       ],
+       "properties": {
+           
+        "pickuplocation": {
+            "type":"string",
+            "latitude":{
+               "type": "string"
+            },
+            "longitude":{
+                "type":"string"
+            }
+        }
+
+}
+
+},
+"AcceptandReject":{
+"required":[
+    "customer",
+    "jobid",
+    "status",
+    "driver",
+    "latitude",
+    "longitude"
+],
+"properties":{
+   "customer":{
+       "type":"string"
+   } ,
+   "jobid":{
+    "type":"string"
+} ,
+"status":{
+    "type":"string"
+} ,
+"driver":{
+    "type":"string"
+} ,
+
+        "latitude":{
+           "type": "string"
+        },
+        "longitude":{
+            "type":"string"
+        }
+    }
+},
+"ridestatus":{
+    "required":[
+    "jobid",
+    "triptime",
+    "driverstatus",
+    "tripstatus",
+    "latitude",
+    "longitude",
+    "driverid",
+    "customer"
+    ],
+    "properties":{
+        "jobid":{
+            "type":"string"
+        } ,
+        "triptime":{
+            "type":"Date"
+        } ,
+        "driverstatus":{
+            "type":"string"
+        } ,
+        "tripstatus":{
+            "type":"string"
+        } ,
+        "latitude":{
+            "type": "string"
+         },
+         "longitude":{
+             "type":"string"
+         },
+
+         "driverid":{
+            "type":"string"
+        } ,
+        "customer":{
+            "type":"string"
+        } 
+  }
+},
+
+"driverLocation":{
+"required":[
+    "lat",
+    "long",
+    "driver",
+    "customer",
+    "address"
+],
+"properties":{
+    "lat":{
+        "type": "string"
+     },
+     "long":{
+         "type":"string"
+     },
+     "driver":{
+        "type":"string"
+    },
+    "customer":{
+        "type":"string"
+    },
+    "address":{
+        "type":"string"
+    }
+
+}
+
+},
+"rating":{
+    "required": [
+        "ratedto",
+        "ratedby",
+        "rating"
+       ],
+       "properties": {
+           
+       "ratedto":{
+           "type":"string"
+       },
+       "ratedby":{
+           "type":"string"
+       },
+       "rating":{
+           "type":"number"
+       },
+       "review":{
+           "type":"string"
+       }
+}
+},
+
+"driverdistance":{
+    "required": [
+        "driverid",
+        "distance",
+        "date"
+       ],
+       "properties": {
+           
+        "driverid":{
+            "type":"string"
+        },
+        "distance":{
+            "type":"string"
+        },
+        "date":{
+            "type":"string"
+        }
+ }
+
+},
+
+"documents":{
+    "required": [
+        "driverid"
+       
+       ],
+       "properties": {
+           
+        "driverid":{
+            "type":"string"
+        }
+        
+ }
+},
+
+"logout":{
+    "required": [
+        "userid"
+       
+       ],
+       "properties": {
+           
+        "userid":{
+            "type":"string"
+        }
+        
+ }
+},
+
+"upcomingandcompleteride":{
+    "required": [
+        
+       "driverid"
+       ],
+       "properties": {
+           
+        
+            "ridestatus":{
+                "type":"string"
+            },
+            "driverid":{
+                "type":"string"
+            }        
+        
+ }
+},
+
+        "Driverres": {
+            "properties": {
+              "success": {
+                "type": "boolean"
+              }
+            }
+          }
+       
+    }
+}
+  
